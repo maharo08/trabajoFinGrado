@@ -1,0 +1,45 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" formControlName="name" />
+  </div>
+  <br />
+
+  <div class="form-group">
+    <label>Surname</label>
+    <input type="text" class="form-control" formControlName="surname" />
+  </div>
+  <br />
+
+  <div class="form-group">
+    <label>Email</label>
+    <input type="text" class="form-control" formControlName="email" />
+  </div>
+  <br />
+
+  <div class="form-group">
+    <label>Password</label>
+    <input type="password" class="form-control" formControlName="password" />
+  </div>
+  <br />
+
+  <div class="form-group">
+    <label>Repite password</label>
+    <input
+      type="password"
+      class="form-control"
+      formControlName="repite_password"
+    />
+  </div>
+  <br />
+
+  <div class="form-group">
+    <label>Session</label>
+    <input type="text" class="form-control" formControlName="session" />
+  </div>
+  <br />
+
+  <div class="d-grid gap-2">
+    <input class="btn btn-primary" type="submit" value="Submit form" />
+  </div>
+</form>
