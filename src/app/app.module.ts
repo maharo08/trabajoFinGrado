@@ -10,6 +10,12 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { Error404Component } from './pages/error404/error404.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+
+import { initializeApp ,provideFirebaseApp} from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import{provideFirestore,getFirestore} from '@angular/fire/firestore';
+import { provideAuth,getAuth } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -20,12 +26,16 @@ import { RegisterComponent } from './pages/register/register.component';
     Error404Component,
     ContactComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AppRoutingModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,9 @@ import { ClientService } from './../../services/client.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Client } from 'src/app/interfaces/cliente.model';
+import { debounceTime } from 'rxjs';
+import { AuthService } from './../../services/auth.service';
+
 
 @Component({
   selector: 'app-register',
@@ -17,7 +20,8 @@ export class RegisterComponent implements OnInit {
    *  untouched <--> toueched
    */
 
-  constructor(private readonly clientService : ClientService) {
+  constructor(private readonly clientService : ClientService, private readonly authService : AuthService) {
+
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.minLength(3)]),
 
@@ -28,21 +32,32 @@ export class RegisterComponent implements OnInit {
 
       email: new FormControl('', [
         Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
+        Validators.required
       ]),
 
-      password: new FormControl(''),
+      password: new FormControl('', [Validators.required]),
 
-      repeatPassword: new FormControl(''),
+      repeatPassword: new FormControl('', [Validators.required]),
 
-      session: new FormControl(''),
+      session: new FormControl('', [Validators.required]),
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
 
-  onSubmit() {
+    const emailControl = this.form.controls?.['email'];
+    emailControl.valueChanges.pipe(debounceTime(500)).subscribe(value => {
+      console.log(value);
+    });
+  }
 
-    this.clientService.save(this.form.value as Client);
 
+
+  async onSubmit() {
+    const response =await this.clientService.addClient(this.form.value);
+    console.log(response);
+    this.authService.register(this.form.value)
+    .then(response => {console.log(response);})
+    .catch(error => console.log(error));
   }
 }
