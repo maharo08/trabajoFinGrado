@@ -4,11 +4,13 @@ import { Error404Component } from "../pages/error404/error404.component"
 import { LandingComponent } from "../pages/landing/landing.component"
 import { LoginComponent } from "../pages/login/login.component"
 import { RegisterComponent } from "../pages/register/register.component"
+import { canActivate, redirectUnauthorizedTo } from "@angular/fire/auth-guard"
+
 
 export const routes: Routes = [
 
   {path: '', pathMatch:'full', redirectTo: 'landing'},
-  {path: 'landing', component: LandingComponent},
+  {path: 'landing', component: LandingComponent, ...canActivate(() => redirectUnauthorizedTo(['/register']))},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
   {path: 'contact', component: ContactComponent},
@@ -16,6 +18,3 @@ export const routes: Routes = [
   {path: '**', redirectTo: 'error404'}
 
 ]
-
-
-

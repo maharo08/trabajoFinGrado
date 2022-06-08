@@ -57,8 +57,13 @@
 
     <label>Password</label>
     <input type="password" class="form-control" formControlName="password" />
+
     <div class="alert alert-danger" role="alert" *ngIf="form.controls['password'].errors?.['required'] && form.controls['password'].touched" >
       Complete the password field
+    </div>
+
+    <div class="alert alert-danger" role="alert" *ngIf="form.controls['password'].errors?.['minlength'] && form.controls['password'].touched" >
+      The password field must be at a minimum of 6 characters.
     </div>
 
   </div>

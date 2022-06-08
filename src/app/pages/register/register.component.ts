@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Client } from 'src/app/interfaces/cliente.model';
 import { debounceTime } from 'rxjs';
 import { AuthService } from './../../services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,10 +21,16 @@ export class RegisterComponent implements OnInit {
    *  untouched <--> toueched
    */
 
-  constructor(private readonly clientService : ClientService, private readonly authService : AuthService) {
+  constructor(
+    private readonly clientService : ClientService,
+    private readonly authService : AuthService,
+    private router: Router) {
 
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3)
+      ]),
 
       surname: new FormControl('', [
         Validators.required,
@@ -35,7 +42,10 @@ export class RegisterComponent implements OnInit {
         Validators.required
       ]),
 
-      password: new FormControl('', [Validators.required]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.minLength(6)
+      ]),
 
       repeatPassword: new FormControl('', [Validators.required]),
 
@@ -57,7 +67,10 @@ export class RegisterComponent implements OnInit {
     const response =await this.clientService.addClient(this.form.value);
     console.log(response);
     this.authService.register(this.form.value)
-    .then(response => {console.log(response);})
+    .then(response => {
+      console.log(response);
+      this.router.navigate(['/login']);
+    })
     .catch(error => console.log(error));
   }
 }

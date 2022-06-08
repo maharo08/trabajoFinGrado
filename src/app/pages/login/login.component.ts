@@ -2,6 +2,7 @@ import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClientService } from 'src/app/services/client.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,10 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private authService: AuthService) {
+  constructor(
+    private authService: AuthService,
+    private router: Router
+    ) {
 
     this.form = new FormGroup({
 
@@ -34,9 +38,19 @@ export class LoginComponent implements OnInit {
   onSubmit() {
 
     this.authService.login(this.form.value)
-    .then(response => {console.log(response);})
+    .then(response => {console.log(response), console.log('Estas logeado');})
     .catch(error => console.log(error));
 
+  }
+
+  onClick() {
+
+    this.authService.loginWithGoogle()
+    .then(response => {
+      console.log(response),
+      console.log('Estas logeado con Google'),
+      this.router.navigate(['/landing']);})
+    .catch(error => console.log(error));
   }
 
 }
