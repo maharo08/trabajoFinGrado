@@ -1,3 +1,4 @@
+import { ContactService } from './../../services/contact.service';
 import { ClientService } from './../../services/client.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -12,6 +13,8 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
+
+
 export class RegisterComponent implements OnInit {
   form: FormGroup;
 
@@ -24,6 +27,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private readonly clientService : ClientService,
     private readonly authService : AuthService,
+    private readonly contactService: ContactService,
     private router: Router) {
 
     this.form = new FormGroup({
@@ -57,20 +61,28 @@ export class RegisterComponent implements OnInit {
 
     const emailControl = this.form.controls?.['email'];
     emailControl.valueChanges.pipe(debounceTime(500)).subscribe(value => {
+
       console.log(value);
+
     });
+
   }
 
 
-
   async onSubmit() {
+
     const response =await this.clientService.addClient(this.form.value);
     console.log(response);
     this.authService.register(this.form.value)
+
     .then(response => {
+
       console.log(response);
       this.router.navigate(['/login']);
+
     })
+
     .catch(error => console.log(error));
+
   }
 }

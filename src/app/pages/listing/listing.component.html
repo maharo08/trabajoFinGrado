@@ -1,0 +1,12 @@
+<br /><br /><br /><br />
+
+<div class="Cl">
+  <div class="Client" *ngFor="let client of clients">
+    <h4>{{client.name}}</h4>
+    <p>{{client.email}}</p>
+    <p>{{client.surname}}</p>
+
+    <button class="btn btn-outline-danger" (click)="onClickDelete(client)" >Borrar</button>
+
+  </div>
+</div>

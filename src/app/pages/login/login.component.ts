@@ -1,3 +1,4 @@
+import { Client } from './../../interfaces/cliente.model';
 import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -16,8 +17,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
-    ) {
+    private router: Router,
+    private clientService: ClientService
+  ) {
 
     this.form = new FormGroup({
 
@@ -35,11 +37,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSubmit() {
+  async onSubmit() {
 
-    this.authService.login(this.form.value)
-    .then(response => {console.log(response), console.log('Estas logeado');})
-    .catch(error => console.log(error));
+    const response = await this.authService.login(this.form.value);
+    await this.clientService.getClientList().subscribe(clients => {
+
+      this.authService.addUser(clients.find(client => client.email === response.user.email) as Client);
+      console.log(this.authService.user);
+
+    })
+
 
   }
 

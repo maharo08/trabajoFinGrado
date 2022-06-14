@@ -1,12 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
+import { Subject } from 'rxjs';
+import { Client } from '../interfaces/cliente.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private auth: Auth) { }
+  public user$ = new Subject<Client>();
+  public user!: Client;
+
+  constructor(private auth: Auth) {}
 
 
   register ({email, password}:any) {
@@ -27,4 +32,12 @@ export class AuthService {
   logout() {
     return signOut(this.auth);
   }
+
+  addUser(user:Client) {
+
+    this.user$.next(user);
+    this.user = user;
+
+  }
+
 }

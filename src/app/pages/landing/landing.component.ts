@@ -21,7 +21,6 @@ export class LandingComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.clientList = this.clientService.clientList;
   }
 
   onclick() {

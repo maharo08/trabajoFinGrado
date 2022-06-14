@@ -10,6 +10,13 @@
 	  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
     <!--===============================================================================================-->
 	  <link rel="stylesheet" type="text/css" href="login.component.css">
+    <!--===============================================================================================-->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+    </style>
 
 
   </head>
@@ -20,12 +27,12 @@
       <div class="container-login100">
         <div class="wrap-login100">
           <div class="login100-pic" data-tilt>
-            <img src="./assets/img-01.png" alt="IMG">
+            <img src="../../../assets/img-01.png" alt="IMG">
           </div>
 
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
 
-            <span class="login100-form-title">
+            <span class="login-tittle">
               Member Login
             </span>
 
@@ -58,14 +65,14 @@
 
             <br />
 
-            <div class="container-login100-form-btn">
-              <button class="login100-form-btn">
+            <div class="container-login-button">
+              <button class="login-button">
                 Login
               </button>
             </div>
 
-            <div class="container-login100-form-btn">
-              <button class="login100-form-btn" (click)="onClick()">Login with Google</button>
+            <div class="container-login-button">
+              <button class="login-button" (click)="onClick()">Login with Google</button>
             </div>
 
 

@@ -3,30 +3,6 @@ input.ng-valid.ng-touched {border: 1px solid green;}
 input.ng-invalid.ng-touched {border: 1px solid red;}
 
 
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-@font-face {
-  font-family: Poppins-Regular;
-  src: url('C:\Cursos\Angular\trabajoFinGrado\src\assets\fonts\poppins\Poppins-Regular.ttf') format("opentype");
-}
-
-@font-face {
-  font-family: Poppins-Bold;
-  src: url('C:\Cursos\Angular\trabajoFinGrado\src\assets\fonts\poppins\Poppins-Bold.ttf') format("opentype");
-}
-
-@font-face {
-  font-family: Poppins-Medium;
-  src: url('C:\Cursos\Angular\trabajoFinGrado\src\assets\fonts\poppins\Poppins-Medium.ttf') format("opentype");
-}
-
-@font-face {
-  font-family: Montserrat-Bold;
-  src: url('C:\Cursos\Angular\trabajoFinGrado\src\assets\fonts\montserrat\Montserrat-Bold.ttf') format("opentype");
-}
-
 /*//////////////////////////////////////////////////////////////////
 [ RESTYLE TAG ]*/
 
@@ -205,8 +181,10 @@ iframe {
   width: 290px;
 }
 
-.login100-form-title {
-  font-family: Poppins-Bold;
+.login-tittle {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
   font-size: 24px;
   color: #333333;
   line-height: 1.2;
@@ -227,7 +205,7 @@ iframe {
 }
 
 .input100 {
-  font-family: Poppins-Medium;
+  font-family: 'Poppins', sans-serif;
   font-size: 15px;
   line-height: 1.5;
   color: #666666;
@@ -294,7 +272,7 @@ iframe {
 
 /*------------------------------------------------------------------
 [ Button ]*/
-.container-login100-form-btn {
+.container-login-button {
   width: 100%;
   display: -webkit-box;
   display: -webkit-flex;
@@ -306,8 +284,8 @@ iframe {
   padding-top: 20px;
 }
 
-.login100-form-btn {
-  font-family: Montserrat-Bold;
+.login-button {
+  font-family: 'Montserrat', sans-serif;
   font-size: 15px;
   line-height: 1.5;
   color: #fff;
@@ -316,7 +294,7 @@ iframe {
   width: 100%;
   height: 50px;
   border-radius: 25px;
-  background: #57b846;
+  background-color: #393e46;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -332,7 +310,7 @@ iframe {
   transition: all 0.4s;
 }
 
-.login100-form-btn:hover {
+.login-button:hover {
   background: #333333;
 }
 
@@ -402,7 +380,7 @@ iframe {
   right: 8px;
   pointer-events: none;
 
-  font-family: Poppins-Medium;
+  font-family: 'Poppins', sans-serif;
   color: #c80000;
   font-size: 13px;
   line-height: 1.4;
