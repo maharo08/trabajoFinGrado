@@ -2,10 +2,10 @@ import { ContactService } from './../../services/contact.service';
 import { ClientService } from './../../services/client.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Client } from 'src/app/interfaces/cliente.model';
 import { debounceTime } from 'rxjs';
 import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
+import { sendEmailVerification } from 'firebase/auth';
 
 
 @Component({
@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
         Validators.minLength(6)
       ]),
 
-      repeatPassword: new FormControl('', [Validators.required]),
+      image: new FormControl('', [Validators.required]),
 
       session: new FormControl('', [Validators.required]),
     });
@@ -77,6 +77,7 @@ export class RegisterComponent implements OnInit {
 
     .then(response => {
 
+      sendEmailVerification
       console.log(response);
       this.router.navigate(['/login']);
 

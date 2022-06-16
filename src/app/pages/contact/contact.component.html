@@ -2,10 +2,11 @@
 
   <link href="contact.component.css" rel="stylesheet" />
 
+
   <br /><br /><br /><br />
 
   <!-- Bootstrap 5 starter form -->
-  <form class="form" id="form" action="https://formspree.io/f/myyovbvj" method="POST">
+  <form class="form" id="form"  method="POST">
 
     <!-- Name input -->
     <div class="mb-3">
@@ -37,7 +38,7 @@
 
     <!-- Form submit button -->
     <div class="d-grid">
-      <button class="btn-primary" name="submit" type="submit">Submit</button>
+      <button class="btn-primary"(click)="send()">Enviar</button>
     </div>
 
   </form>

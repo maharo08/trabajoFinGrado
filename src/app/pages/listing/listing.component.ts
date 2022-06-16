@@ -12,17 +12,14 @@ export class ListingComponent implements OnInit {
 
   clients : Client[]=[];
 
-  constructor( public clientService:ClientService) {}
+  constructor( public clientService:ClientService ) {}
 
 
   // El siguiente código inicializa el componente y llama al método getClient del servicio ClientService.
   // getClient devuelve una lista de clientes, que se asigna a la variable local clients.
   ngOnInit(): void {
-
     this.clientService.getClientList().subscribe(clients=>{
-
       this.clients=clients;
-
     })
   }
 

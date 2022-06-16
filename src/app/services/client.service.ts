@@ -12,43 +12,35 @@ export class ClientService {
   private cliRef:CollectionReference<DocumentData>;
 
   constructor(private firestore:Firestore) {
-
     this.cliRef = collection(this.firestore,'client');
-
   }
 
 
   // Este código está agregando un cliente a la colección de clientes en Firestore.
   addClient(client: Client){
-
     return addDoc(this.cliRef,client);
-
   }
 
 
   //Pintamos una lista con los usuarios registrados
   getClientList():Observable<Client[]> {
-
     return collectionData(this.cliRef,{idField:'id'}) as Observable<Client[]>;
-
   }
 
 
   // Este código en particular está borrando un cliente utilizando la función deleteDoc.
   // La función deleteClient toma como argumento el ID y luego usa el método de borrado de documentos de Firestore.
   deleteClient(client: Client){
-
     const clientDocRef = doc(this.firestore, `client/${client.id}`);
     return deleteDoc(clientDocRef);
-
   }
 
-  getClient(email: string){
 
+  getClient(email: string){
     const emailDocRef = doc(this.firestore, `client/${email}`);
     return getDoc(emailDocRef);
-
   }
 
 
 }
+

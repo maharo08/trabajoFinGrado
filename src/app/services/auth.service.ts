@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
+import { sendEmailVerification } from 'firebase/auth';
 import { Subject } from 'rxjs';
 import { Client } from '../interfaces/cliente.model';
 

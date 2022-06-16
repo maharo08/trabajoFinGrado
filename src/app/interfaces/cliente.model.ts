@@ -6,5 +6,6 @@ export interface Client {
     email: string;
     password: string;
     session: number;
+    image: string;
     itsAdministrator?: boolean;
 }

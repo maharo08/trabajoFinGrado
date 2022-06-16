@@ -1,0 +1,32 @@
+.container {
+  min-width: 600px;
+  margin: 0 auto;
+  padding: 1em;
+  border-radius: 1rem;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Client {
+  width: 300px;
+  border-radius: 1rem;
+  border: 1px solid black;  margin: 10px;
+  padding: 10px;
+}
+
+.Client img {
+  width: 100%;
+}
+
+.text-center {text-align: center !important;}
+.text-uppercase {text-transform: uppercase !important;}
+.text-secondary {
+  --bs-text-opacity: 1;
+  color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important;
+}
+
+.centrado{
+  width: 150px;
+  margin-left: 25%;
+}

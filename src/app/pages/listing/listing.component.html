@@ -1,12 +1,16 @@
 <br /><br /><br /><br />
 
-<div class="Cl">
+<div class="container">
   <div class="Client" *ngFor="let client of clients">
-    <h4>{{client.name}}</h4>
+    <h4 class="text-center text-uppercase text-secondary">{{client.name}} {{client.surname}}</h4>
+    <hr/>
+    <img [src]="client.image" alt="IMG">
+    <hr/>
     <p>{{client.email}}</p>
-    <p>{{client.surname}}</p>
+    <p>{{client.password}}</p>
 
-    <button class="btn btn-outline-danger" (click)="onClickDelete(client)" >Borrar</button>
+    <button class="btn btn-outline-danger centrado" (click)="onClickDelete(client)" >Borrar</button>
 
   </div>
 </div>
+<br /><br /><br /><br />
