@@ -23,7 +23,6 @@ import { MachinesComponent } from './pages/blog/blogPages/machines/machines.comp
 import { WarmingComponent } from './pages/blog/blogPages/warming/warming.component';
 import { SuplementationComponent } from './pages/blog/blogPages/suplementation/suplementation.component';
 import { RestComponent } from './pages/blog/blogPages/rest/rest.component';
-import { SendEmailComponent } from './pages/send-email/send-email.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +42,6 @@ import { SendEmailComponent } from './pages/send-email/send-email.component';
     WarmingComponent,
     SuplementationComponent,
     RestComponent,
-    SendEmailComponent,
   ],
   imports: [
     BrowserModule,

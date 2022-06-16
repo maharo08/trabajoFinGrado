@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Auth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
-import { sendEmailVerification } from 'firebase/auth';
 import { Subject } from 'rxjs';
 import { Client } from '../interfaces/cliente.model';
 
@@ -16,13 +15,11 @@ export class AuthService {
 
 
   register ({email, password}:any) {
-
     return createUserWithEmailAndPassword(this.auth, email, password);
   }
 
 
   login ({email, password}:any) {
-
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
@@ -30,15 +27,15 @@ export class AuthService {
     return signInWithPopup(this.auth, new GoogleAuthProvider);
   }
 
+  addUser(user:Client) {
+    this.user$.next(user);
+    this.user = user;
+  }
+
   logout() {
     return signOut(this.auth);
   }
 
-  addUser(user:Client) {
 
-    this.user$.next(user);
-    this.user = user;
-
-  }
 
 }

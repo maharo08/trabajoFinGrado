@@ -1,4 +1,3 @@
-import { ContactService } from './../../services/contact.service';
 import { ClientService } from './../../services/client.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -18,41 +17,17 @@ import { sendEmailVerification } from 'firebase/auth';
 export class RegisterComponent implements OnInit {
   form: FormGroup;
 
-  /**
-   *  valid <--> invalid
-   *  pristine <--> dirty
-   *  untouched <--> toueched
-   */
-
   constructor(
     private readonly clientService : ClientService,
     private readonly authService : AuthService,
-    private readonly contactService: ContactService,
     private router: Router) {
 
     this.form = new FormGroup({
-      name: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3)
-      ]),
-
-      surname: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(10),
-      ]),
-
-      email: new FormControl('', [
-        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
-        Validators.required
-      ]),
-
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6)
-      ]),
-
+      name: new FormControl('', [ Validators.required, Validators.minLength(3) ]),
+      surname: new FormControl('', [ Validators.required, Validators.maxLength(10), ]),
+      email: new FormControl('', [ Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/), Validators.required ]),
+      password: new FormControl('', [ Validators.required, Validators.minLength(6) ]),
       image: new FormControl('', [Validators.required]),
-
       session: new FormControl('', [Validators.required]),
     });
   }
@@ -61,9 +36,7 @@ export class RegisterComponent implements OnInit {
 
     const emailControl = this.form.controls?.['email'];
     emailControl.valueChanges.pipe(debounceTime(500)).subscribe(value => {
-
       console.log(value);
-
     });
 
   }
@@ -76,11 +49,8 @@ export class RegisterComponent implements OnInit {
     this.authService.register(this.form.value)
 
     .then(response => {
-
-      sendEmailVerification
       console.log(response);
       this.router.navigate(['/login']);
-
     })
 
     .catch(error => console.log(error));

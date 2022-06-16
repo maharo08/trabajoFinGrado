@@ -9,22 +9,23 @@ import { Observable } from 'rxjs';
 export class ClientService {
 
   // Hacemos referencia a una coleccion de documentos en la base de datos.
-  private cliRef:CollectionReference<DocumentData>;
+  private clientReference:CollectionReference<DocumentData>;
 
   constructor(private firestore:Firestore) {
-    this.cliRef = collection(this.firestore,'client');
+    // El siguiente código establece una referencia a la colección de clientes en firestore.
+    this.clientReference = collection(this.firestore,'client');
   }
 
 
   // Este código está agregando un cliente a la colección de clientes en Firestore.
   addClient(client: Client){
-    return addDoc(this.cliRef,client);
+    return addDoc(this.clientReference,client);
   }
 
 
   //Pintamos una lista con los usuarios registrados
   getClientList():Observable<Client[]> {
-    return collectionData(this.cliRef,{idField:'id'}) as Observable<Client[]>;
+    return collectionData(this.clientReference,{idField:'id'}) as Observable<Client[]>;
   }
 
 
@@ -41,6 +42,4 @@ export class ClientService {
     return getDoc(emailDocRef);
   }
 
-
 }
-

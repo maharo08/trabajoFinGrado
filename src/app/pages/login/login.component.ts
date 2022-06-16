@@ -23,11 +23,7 @@ export class LoginComponent implements OnInit {
 
     this.form = new FormGroup({
 
-      email: new FormControl('', [
-        Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/),
-        Validators.required
-      ]),
-
+      email: new FormControl('', [ Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/), Validators.required ]),
       password: new FormControl('', [Validators.required]),
 
     });
@@ -46,7 +42,6 @@ export class LoginComponent implements OnInit {
       console.log(this.authService.user);
 
     })
-
 
   }
 

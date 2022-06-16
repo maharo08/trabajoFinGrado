@@ -10,6 +10,7 @@ import { Client } from 'src/app/interfaces/cliente.model';
 
 export class ListingComponent implements OnInit {
 
+  // Definimos una lista de tipo clientes.
   clients : Client[]=[];
 
   constructor( public clientService:ClientService ) {}
