@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
-import { sendEmailVerification } from 'firebase/auth';
 
 
 @Component({

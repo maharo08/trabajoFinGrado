@@ -6,24 +6,24 @@
   <br /><br /><br /><br />
 
   <!-- Bootstrap 5 starter form -->
-  <form class="form" id="formContact"  method="POST">
+  <form class="form" [formGroup]="formContact" method="POST">
 
     <!-- Name input -->
     <div class="mb-3">
       <label class="form-label">Name</label>
-      <input class="form-control" name="name" type="text" placeholder="Name" data-sb-validations="required" />
+      <input class="form-control" name="name" formControlName="name" type="text" placeholder="Name" data-sb-validations="required" />
     </div>
 
     <!-- Email address input -->
     <div class="mb-3">
       <label class="form-label">Email Address</label>
-      <input class="form-control" name="email" type="email" placeholder="Email Address" data-sb-validations="required, email" />
+      <input class="form-control" name="email" formControlName="email" type="email" placeholder="Email Address" data-sb-validations="required, email" />
     </div>
 
     <!-- Message input -->
     <div class="mb-3">
       <label class="form-label">Message</label>
-      <textarea class="form-control" name="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
+      <textarea class="form-control" name="message" formControlName="message" type="text" placeholder="Message" style="height: 10rem;" data-sb-validations="required"></textarea>
     </div>
 
     <!-- Form submissions success message -->

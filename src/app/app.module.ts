@@ -10,7 +10,7 @@ import { Error404Component } from './pages/error404/error404.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-
+import { HttpClientModule } from '@angular/common/http';
 import { initializeApp ,provideFirebaseApp} from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import{provideFirestore,getFirestore} from '@angular/fire/firestore';
