@@ -50,7 +50,8 @@ import { RestComponent } from './pages/blog/blogPages/rest/rest.component';
     AppRoutingModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    provideAuth(() => getAuth())
+    provideAuth(() => getAuth()),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
